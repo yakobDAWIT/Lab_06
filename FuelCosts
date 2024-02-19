@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        double gallons, efficiency, price, costPer100Miles, distance; // initialize variables
+        boolean done = false; // will loop until done is true
+
+        do {
+            System.out.print("Enter number of gallons of gas in the tank: "); // asks user to enter number of gallons of gas in tank
+            if (in.hasNextDouble()) { //input gallons of gas in the tank
+                gallons = in.nextDouble();
+                System.out.print("Enter fuel efficiency in miles per gallon: "); // asks user to enter fuel efficiency in miles per gallon
+                if (in.hasNextDouble()) { // input efficiency
+                    efficiency = in.nextDouble();
+                    System.out.print("Enter price of gas per gallon: "); // asks user to enter price of gas per gallon
+                    if (in.hasNextDouble()) { // input price
+                        price = in.nextDouble();
+                        costPer100Miles = price / efficiency * 100; // calculate cost per 100 miles
+                        distance = gallons * efficiency; // calculate the distance
+                        System.out.println("Cost per 100 miles: $" + costPer100Miles); // print cost per 100 miles
+                        System.out.println("Distance the car can go: " + distance + " miles"); // print distance
+                        done = true; // exits loop
+                    }
+                    else { // invalid input
+                        in.nextLine();
+                        System.out.println("Invalid input. Please enter a valid price.");
+                    }
+                }
+                else { // invalid input
+                    in.nextLine();
+                    System.out.println("Invalid input. Please enter a valid fuel efficiency.");
+                }
+            }
+            else { // invalid input
+                in.nextLine();
+                System.out.println("Invalid input. Please enter a valid number of gallons.");
+            }
+        } while (!done); // loops until done is true
+    }
+}
