@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        Random generator = new Random();
+        int randomNumber = generator.nextInt(10) + 1; // generate random number between 1 and 10
+        int guess;
+        boolean done = false; // loop until done is true
+
+        do {
+            System.out.print("Guess a number between 1 and 10: "); // ask user to guess the number between 1 and 10
+            if (in.hasNextInt()) { // input guess
+                guess = in.nextInt();
+                if (guess < 1 || guess > 10) { // keep guess within 1-10
+                    System.out.println("Invalid guess. Please enter a number between 1 and 10."); // print invalid input
+                    }
+                else {
+                    if (guess == randomNumber) { // if guess is correct
+                        System.out.println("Congratulations! You guessed the number correctly!"); // print congrats
+                        }
+                else if (guess < randomNumber) { // if guess is low
+                        System.out.println("Too low! The number was " + randomNumber); // print too low
+                    }
+                    else { // if guess is high
+                        System.out.println("Too high! The number was " + randomNumber); // print too high
+                        }
+                    done = true;}
+
+            }
+            else { // invalid input
+                in.nextLine();
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
+        } while (!done); // loop until done is true
+    }
+}
