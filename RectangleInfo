@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        double width, height, area, perimeter, diagonal; // initialize variables
+        boolean done = false; // will loop until done = true
+
+        do {
+            System.out.print("Enter width of the rectangle: "); // asks user to enter width of the rectangle
+            if (in.hasNextDouble()) { // input width
+                width = in.nextDouble();
+                System.out.print("Enter height of the rectangle: "); // asks user to enter height of the rectangle
+                if (in.hasNextDouble()) { // input height
+                    height = in.nextDouble();
+                    area = width * height; // calculate area of rectangle
+                    perimeter = 2 * (width + height); // calculate perimeter of rectangle
+                    diagonal = Math.sqrt(width * width + height * height); // calculate length of the diagonal
+                    System.out.println("Area of the rectangle: " + area); // print area
+                    System.out.println("Perimeter of the rectangle: " + perimeter); // print perimeter
+                    System.out.println("Length of the diagonal: " + diagonal); // print diagonal
+                    done = true; // exits loop
+                }
+                else { // invalid input
+                    in.nextLine();
+                    System.out.println("Invalid input. Please enter a valid height.");
+                }
+            }
+            else { // invalid input
+                in.nextLine();
+                System.out.println("Invalid input. Please enter a valid width.");
+            }
+        }
+        while (!done); // loop until done is true
+    }
+}
